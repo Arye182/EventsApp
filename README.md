@@ -14,6 +14,6 @@ home assignment - simple app that track users events , you can add, delete event
 2. room vs sqlite directly
 3. view binding vs statics
 4. flow vs. live data
-5. one activity vs activity + fragments with navigation
+5. one activity vs activity + fragments with navigationn
 
 
