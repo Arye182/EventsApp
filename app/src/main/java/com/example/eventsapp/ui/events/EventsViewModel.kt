@@ -37,14 +37,16 @@ class EventsViewModel @ViewModelInject constructor(
 
         val newEvent = EventEntity(name = eventName)
         createEvent(newEvent)
-
     }
 
-    private fun createEvent(event : EventEntity) = viewModelScope.launch(Dispatchers.IO) {
+    // save event
+    private fun createEvent(event: EventEntity) = viewModelScope.launch(Dispatchers.IO) {
         eventDao.save(event)
+
     }
 
-    private fun deleteEvent(event: EventEntity) = viewModelScope.launch(Dispatchers.IO){
-
+    // delete event
+    fun onDeleteClick(it: EventEntity) = viewModelScope.launch(Dispatchers.IO) {
+        eventDao.delete(it)
     }
 }

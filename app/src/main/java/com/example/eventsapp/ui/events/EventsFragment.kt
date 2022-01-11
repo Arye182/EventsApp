@@ -15,12 +15,14 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
 
     private val viewModel: EventsViewModel by viewModels()
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentEventsBinding.bind(view)
 
-        val eventAdapter = EventsAdapter()
+        val eventAdapter = EventsAdapter{
+            // if click listenere has been activated
+            viewModel.onDeleteClick(it)
+        }
 
         binding.apply {
             // recycler view
@@ -35,10 +37,10 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
                 viewModel.eventName = it.toString()
             }
 
-
             // save button
             buttonSaveEvent.setOnClickListener{
                 viewModel.onSaveClick()
+
             }
         }
 
@@ -46,5 +48,4 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
             eventAdapter.submitList(it)
         }
     }
-
 }

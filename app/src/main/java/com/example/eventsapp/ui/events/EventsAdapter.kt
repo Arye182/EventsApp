@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.eventsapp.data.EventEntity
 import com.example.eventsapp.databinding.EventCardBinding
 
-class EventsAdapter : ListAdapter<EventEntity, EventsAdapter.EventViewHolder >(DiffCallback()) {
+class EventsAdapter(private val onItemClicked: (EventEntity) -> Unit) : ListAdapter<EventEntity, EventsAdapter.EventViewHolder >(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         val binding = EventCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -20,11 +20,13 @@ class EventsAdapter : ListAdapter<EventEntity, EventsAdapter.EventViewHolder >(D
         holder.bind(currentEvent)
     }
 
-    class EventViewHolder(private val binding: EventCardBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class EventViewHolder(private val binding: EventCardBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(event: EventEntity) {
             binding.apply {
                 eventCardName.text = event.name
                 eventCardTime.text = event.createdDateFormatted
+                // set the listener of delete button
+                eventCardDeleteButton.setOnClickListener { onItemClicked(event) }
             }
         }
     }
