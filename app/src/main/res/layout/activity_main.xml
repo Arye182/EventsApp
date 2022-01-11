@@ -7,53 +7,15 @@
     tools:context=".MainActivity">
 
 
-    <!--  new event ui   -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/linearLayout"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:orientation="horizontal"
-        android:padding="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph"/>
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:hint="Please Enter A New Event"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!--  list of events ui - recycler view   -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/events_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
-        android:clipToPadding="false"
-        android:padding="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:listitem="@layout/event_card" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,12 @@
-package com.example.eventsapp.view
+package com.example.eventsapp.ui.events
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.eventsapp.data.EventItem
+import com.example.eventsapp.data.EventEntity
 import com.example.eventsapp.databinding.EventCardBinding
 
-class EventAdapter(private val eventsList: List<EventItem>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventsAdapter(private val eventsList: List<EventEntity>) : RecyclerView.Adapter<EventsAdapter.EventViewHolder>() {
 
     class EventViewHolder(val binding: EventCardBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -20,7 +20,6 @@ class EventAdapter(private val eventsList: List<EventItem>) : RecyclerView.Adapt
         val currentEventItem = eventsList[position]
         // update the item fields
         holder.binding.eventCardName.text = currentEventItem.name
-        holder.binding.eventCardTime.text = currentEventItem.date
 
         // what happens when press delete
         holder.binding.eventCardDeleteButton.setOnClickListener {

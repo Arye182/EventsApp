@@ -7,12 +7,14 @@ home assignment - simple app that track users events , you can add, delete event
 3. Dependency Injection with Dagger hilt
 4. View Binding
 5. MVVM (Model-View-ViewModel)
+6. Fragments with Navgations
 
 # thoughts
 2. recycler viewer vs list view
 2. room vs sqlite directly
 3. view binding vs statics
 4. flow vs. live data
+5. one activity vs activity + fragments with navigation
 
 # dependencies i used
 1. recycler view
