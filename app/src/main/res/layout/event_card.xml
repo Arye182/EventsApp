@@ -24,14 +24,14 @@
                 android:id="@+id/event_card_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="events name"
+                android:text="@string/events_name"
                 android:maxLines="1"/>
 
             <TextView
                 android:id="@+id/event_card_time"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="created_time">
+                android:text="@string/created_time">
 
             </TextView>
         </LinearLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">EventsApp</string>
+    <string name="please_enter_a_new_event">Please Enter A New Event</string>
+    <string name="save">save</string>
+    <string name="events_name">events name</string>
+    <string name="created_time">created_time</string>
 </resources>

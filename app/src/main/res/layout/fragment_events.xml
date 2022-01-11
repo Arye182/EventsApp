@@ -21,19 +21,21 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
+            android:id="@+id/new_event_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:hint="Please Enter A New Event"
+            android:hint="@string/please_enter_a_new_event"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/button_save_event"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:inputType="text" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_save_event"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="save"
+            android:text="@string/save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
