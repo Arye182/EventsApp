@@ -15,7 +15,7 @@ buildscript {
        espressoVersion = "3.3.0"
        fragmentVersion = "1.4.0"
        gradleVersion = "4.1.0"
-       hiltAndroidXVersion = "1.0.0-alpha02"
+       hiltAndroidXVersion = "1.0.0-alpha03"
        hiltVersion = "2.28.3-alpha"
        junitVersion = "4.13.1"
        kotlinVersion = "1.4.10"
@@ -25,6 +25,7 @@ buildscript {
        navigationVersion = "2.3.5"
        roomVersion = "2.4.0"
        testExtJunitVersion = "1.1.2"
+       test_version = "1.2.0"
    }
 
 

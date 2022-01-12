@@ -8,6 +8,8 @@ home assignment - simple app that track users events , you can add, delete event
 4. View Binding
 5. MVVM (Model-View-ViewModel)
 6. Fragments with Navgations
+7. Room
+8. Paging
 
 # things i had to choose between alternatives
 2. recycler viewer vs list view
