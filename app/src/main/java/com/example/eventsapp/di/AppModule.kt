@@ -2,7 +2,9 @@ package com.example.eventsapp.di
 
 import android.app.Application
 import androidx.room.Room
+import com.example.eventsapp.data.EventDao
 import com.example.eventsapp.data.EventDatabase
+import com.example.eventsapp.data.EventsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,6 +33,10 @@ object AppModule {
     // provider - dao
     @Provides
     fun provideEventDao(db: EventDatabase) = db.eventDao()
+
+    // provider - repository
+    @Provides
+    fun provideEventRepository(dao: EventDao) = EventsRepository(dao)
 
     // provide coroutine scope that lives as long as our app lives
     // supervisor job keeps other childs running if one fails! thats good

@@ -6,18 +6,29 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.eventsapp.data.EventDao
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.example.eventsapp.data.EventEntity
+import com.example.eventsapp.data.EventsRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class EventsViewModel @ViewModelInject constructor(
-    private val eventDao: EventDao,
+    private val eventsRepository: EventsRepository,
     @Assisted private val state: SavedStateHandle
 ) : ViewModel() {
 
     // getting list of events from db
-    val events = eventDao.getEvents().asLiveData()
+    val events = Pager(
+        PagingConfig(
+            10,
+            enablePlaceholders = true,
+            maxSize = 200
+        )
+    ) {
+        eventsRepository.getEvents()
+    }.flow
 
     // current event to be saved
     val event = state.get<EventEntity>("event")
@@ -41,12 +52,11 @@ class EventsViewModel @ViewModelInject constructor(
 
     // save event
     private fun createEvent(event: EventEntity) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.save(event)
-
+        eventsRepository.save(event)
     }
 
     // delete event
     fun onDeleteClick(it: EventEntity) = viewModelScope.launch(Dispatchers.IO) {
-        eventDao.delete(it)
+        eventsRepository.delete(it)
     }
 }

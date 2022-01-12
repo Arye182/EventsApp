@@ -5,10 +5,15 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.eventsapp.R
 import com.example.eventsapp.databinding.FragmentEventsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EventsFragment : Fragment(R.layout.fragment_events) {
@@ -19,7 +24,7 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
         super.onViewCreated(view, savedInstanceState)
         val binding = FragmentEventsBinding.bind(view)
 
-        val eventAdapter = EventsAdapter{
+        val eventAdapter = EventsPagingDataAdapter{
             // if click listener has been activated
             viewModel.onDeleteClick(it)
         }
@@ -44,10 +49,12 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
 
             }
         }
+        //yy@OptIn(ExperimentalCoroutinesApi::class)
 
-        // observer for view model list
-        viewModel.events.observe(viewLifecycleOwner){
-            eventAdapter.submitList(it)
-        }
+
+        // observe view model list
+            lifecycleScope.launch() {
+                viewModel.events.collectLatest { source -> eventAdapter.submitData(source) }
+            }
     }
 }
