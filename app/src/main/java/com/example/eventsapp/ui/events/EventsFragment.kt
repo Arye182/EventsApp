@@ -20,10 +20,11 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
         val binding = FragmentEventsBinding.bind(view)
 
         val eventAdapter = EventsAdapter{
-            // if click listenere has been activated
+            // if click listener has been activated
             viewModel.onDeleteClick(it)
         }
 
+        // View Binding!
         binding.apply {
             // recycler view
             eventsRecyclerView.apply{
@@ -44,6 +45,7 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
             }
         }
 
+        // observer for view model list
         viewModel.events.observe(viewLifecycleOwner){
             eventAdapter.submitList(it)
         }
