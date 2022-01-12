@@ -1,6 +1,8 @@
 package com.example.eventsapp.data
 
 import androidx.paging.PagingSource
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class EventsRepository @Inject constructor(private val dao: EventDao) {
@@ -10,10 +12,14 @@ class EventsRepository @Inject constructor(private val dao: EventDao) {
     }
 
     suspend fun save(event: EventEntity) {
-        return dao.save(event)
+        withContext(Dispatchers.IO) {
+            dao.save(event)
+        }
     }
 
     suspend fun delete(event: EventEntity) {
-        return dao.delete(event)
+        withContext(Dispatchers.IO) {
+            dao.delete(event)
+        }
     }
 }

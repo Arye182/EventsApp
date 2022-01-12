@@ -53,8 +53,8 @@ class EventsFragment : Fragment(R.layout.fragment_events) {
 
 
         // observe view model list
-            lifecycleScope.launch() {
-                viewModel.events.collectLatest { source -> eventAdapter.submitData(source) }
-            }
+        lifecycleScope.launch() {
+            viewModel.events.collectLatest { source -> eventAdapter.submitData(source) }
+        }
     }
 }

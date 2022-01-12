@@ -12,6 +12,8 @@ import androidx.paging.cachedIn
 import com.example.eventsapp.data.EventEntity
 import com.example.eventsapp.data.EventsRepository
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.launch
 
 class EventsViewModel @ViewModelInject constructor(
@@ -20,6 +22,7 @@ class EventsViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     // getting list of events from db
+
     val events = Pager(
         PagingConfig(
             10,
@@ -28,7 +31,7 @@ class EventsViewModel @ViewModelInject constructor(
         )
     ) {
         eventsRepository.getEvents()
-    }.flow
+    }.flow.flowOn(Dispatchers.IO)
 
     // current event to be saved
     val event = state.get<EventEntity>("event")
